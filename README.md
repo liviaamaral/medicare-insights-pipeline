@@ -1,2 +1,63 @@
 # medicare-insights-pipeline
 End-to-end data pipeline for analyzing U.S. Medicare inpatient data using GCP, Terraform, dbt, and Looker Studio
+
+
+## Infrastructure Setup
+
+### Prerequisites
+
+- [GCP account](https://cloud.google.com) with billing enabled
+- [gcloud CLI](https://cloud.google.com/sdk/docs/install) installed and authenticated
+- [Terraform](https://developer.hashicorp.com/terraform/install) >= 1.0
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/livsamaral/medicare-insights-pipeline.git
+cd medicare-insights-pipeline
+```
+
+### 2. Configure GCP
+
+Set your project:
+```bash
+gcloud config set project medicare-de-project
+```
+
+Enable required APIs:
+```bash
+gcloud services enable iam.googleapis.com
+gcloud services enable bigquery.googleapis.com
+gcloud services enable storage.googleapis.com
+gcloud services enable cloudresourcemanager.googleapis.com
+```
+
+### 3. Create service account
+```bash
+gcloud iam service-accounts create medicare-pipeline-sa \
+  --display-name="Medicare Pipeline Service Account"
+
+gcloud projects add-iam-policy-binding medicare-de-project \
+  --member="serviceAccount:medicare-pipeline-sa@medicare-de-project.iam.gserviceaccount.com" \
+  --role="roles/bigquery.admin"
+
+gcloud projects add-iam-policy-binding medicare-de-project \
+  --member="serviceAccount:medicare-pipeline-sa@medicare-de-project.iam.gserviceaccount.com" \
+  --role="roles/storage.admin"
+
+mkdir -p ~/.gcp
+gcloud iam service-accounts keys create ~/.gcp/medicare-de-project.json \
+  --iam-account=medicare-pipeline-sa@medicare-de-project.iam.gserviceaccount.com
+```
+
+### 4. Provision infrastructure
+```bash
+cd terraform
+cp terraform.tfvars.example terraform.tfvars
+```
+
+Edit `terraform.tfvars` with your values, then:
+```bash
+terraform init
+terraform plan
+terraform apply
+```
