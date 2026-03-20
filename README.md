@@ -61,3 +61,31 @@ terraform init
 terraform plan
 terraform apply
 ```
+
+## Pipeline
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) installed
+- Infrastructure provisioned (see above)
+
+### Running the pipeline
+
+Copy the environment file:
+```bash
+cd mage
+cp .env.example .env
+```
+
+Edit `.env` with your GCP project values, then start Mage:
+```bash
+docker compose up
+```
+
+Access the Mage UI at `http://localhost:6789`.
+
+Run the `medicare_ingestion` pipeline — it will:
+1. Extract inpatient charges data from `bigquery-public-data.cms_medicare.inpatient_charges_2015`
+2. Clean and transform the data (standardize columns, remove nulls, add `out_of_pocket` derived column)
+3. Load raw parquet file to GCS at `inpatient/2015/medicare_inpatient_2015.parquet`
+4. Load transformed data to BigQuery table `medicare_insights.inpatient_2015`

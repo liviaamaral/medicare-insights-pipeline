@@ -1,0 +1,7 @@
+version: 0.1.1
+default_profile: default
+
+profiles:
+  default:
+    GOOGLE_SERVICE_ACC_KEY_FILEPATH: "/home/src/medicare_pipeline/credentials/medicare-de-project.json"
+    GOOGLE_LOCATION: US

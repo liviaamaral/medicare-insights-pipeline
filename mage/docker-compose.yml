@@ -1,0 +1,15 @@
+services:
+  magic:
+    image: mageai/mageai:latest
+    command: mage start medicare_pipeline
+    env_file:
+      - .env
+    environment:
+      USER_CODE_PATH: /home/src/medicare_pipeline
+      GOOGLE_APPLICATION_CREDENTIALS: /home/src/medicare_pipeline/credentials/medicare-de-project.json
+    ports:
+      - "6789:6789"
+    volumes:
+      - .:/home/src/
+      - ~/.gcp/medicare-de-project.json:/home/src/medicare_pipeline/credentials/medicare-de-project.json
+    restart: on-failure
