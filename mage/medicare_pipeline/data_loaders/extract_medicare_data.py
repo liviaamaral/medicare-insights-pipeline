@@ -32,15 +32,6 @@ def load_data_from_big_query(*args, **kwargs):
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
 
-    import os
-    print(os.path.exists(path.join(get_repo_path(), 'io_config.yaml')))
-    print(get_repo_path())
-
-    import yaml
-    with open(config_path, 'r') as f:
-        content = yaml.full_load(f)
-    print(content)
-
     return BigQuery.with_config(ConfigFileLoader(config_path, config_profile)).load(query)
 
 
