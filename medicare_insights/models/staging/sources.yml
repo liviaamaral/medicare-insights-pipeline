@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: medicare_insights
+    database: medicare-de-project
+    schema: medicare_insights
+    tables:
+      - name: inpatient_2015
+        description: "Medicare inpatient charges data for 2015"

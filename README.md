@@ -89,3 +89,38 @@ Run the `medicare_ingestion` pipeline — it will:
 2. Clean and transform the data (standardize columns, remove nulls, add `out_of_pocket` derived column)
 3. Load raw parquet file to GCS at `inpatient/2015/medicare_inpatient_2015.parquet`
 4. Load transformed data to BigQuery table `medicare_insights.inpatient_2015`
+
+## Transformations (dbt)
+
+### Setup
+
+Install dependencies:
+```bash
+uv venv
+source .venv/bin/activate
+uv pip install -r requirements.txt
+```
+
+Configure your dbt profile at `~/.dbt/profiles.yml`:
+```yaml
+medicare_insights:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: medicare-de-project
+      dataset: medicare_insights
+      keyfile: ~/.gcp/medicare-de-project.json
+      threads: 4
+      job_execution_timeout_seconds: 300
+      location: us-central1
+```
+
+### Running dbt
+```bash
+cd medicare_insights
+dbt deps
+dbt run
+dbt test
+```

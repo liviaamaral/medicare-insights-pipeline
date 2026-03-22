@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_inpatient
+    description: "Staged Medicare inpatient charges data for 2015"
+    columns:
+      - name: provider_id
+        description: "Unique provider identifier"
+        data_tests:
+          - not_null
+      - name: drg_definition
+        description: "Diagnosis Related Group definition"
+        data_tests:
+          - not_null
+      - name: provider_state
+        description: "State where the provider is located"
+        data_tests:
+          - not_null
+      - name: average_total_payments
+        description: "Average total payments for the DRG"
+        data_tests:
+          - not_null
