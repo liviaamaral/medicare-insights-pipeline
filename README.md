@@ -1,25 +1,17 @@
 # Medicare Insights Pipeline
 
-This project analyzes U.S. Medicare inpatient charges to answer a simple but important question: when someone is hospitalized, how much does Medicare cover and how much does the patient pay out of pocket?
+End-to-end data pipeline that ingests, transforms, and visualizes U.S. Medicare 
+inpatient charges data to answer: **how much does a hospital stay cost and who pays the price?**
 
-## Problem
+Built with GCP, Terraform, Mage, dbt, and Looker Studio.
 
-Medicare inpatient data is publicly available but hard to analyze at scale. Raw charge data is spread across thousands of providers and hundreds of procedures, making it difficult to spot geographic and procedural patterns without a proper data pipeline.
-
-This project builds an end-to-end pipeline that ingests, transforms, and visualizes Medicare inpatient data, surfacing cost disparities by state and procedure type.
-
-## Key Findings
-
-- The average Medicare inpatient admission costs ~$13,000, of which Medicare covers ~85% 
-  and the patient pays ~15% out of pocket
-- DC, Utah, and Hawaii are 58–116% more expensive than the national average out-of-pocket; 
-  Montana and Mississippi are ~30% cheaper
-- Sepsis and joint replacement dominate admission volumes nationally, 
-  but out-of-pocket costs for these procedures vary widely by state
-- Most states cluster between $9K–$13K in Medicare payments and $1.5K–$2.5K out-of-pocket, 
-  suggesting a relatively consistent national pattern
-- DC and Utah are clear outliers — high out-of-pocket costs despite varying Medicare payment levels, 
-  suggesting Medicare covers a smaller share of total costs in these states
+## Table of Contents
+- [Infrastructure](#infrastructure)
+- [Dashboard](#dashboard)
+- [Problem](#problem)
+- [Key Findings](#key-findings)
+- [Setup](#setup)
+- [Further Improvements](#further-improvements)
 
 ## Infrastructure
 
@@ -45,6 +37,25 @@ This project builds an end-to-end pipeline that ingests, transforms, and visuali
     <img src="docs/dashboard.png" alt="Dashboard screenshot" width="800"/>
   </a>
 </p>
+
+## Problem
+
+Medicare inpatient data is publicly available but hard to analyze at scale. Raw charge data is spread across thousands of providers and hundreds of procedures, making it difficult to spot geographic and procedural patterns without a proper data pipeline.
+
+This project builds an end-to-end pipeline that ingests, transforms, and visualizes Medicare inpatient data, surfacing cost disparities by state and procedure type.
+
+## Key Findings
+
+- The average Medicare inpatient admission costs ~$13,000, of which Medicare covers ~85% 
+  and the patient pays ~15% out of pocket
+- DC, Utah, and Hawaii are 58–116% more expensive than the national average out-of-pocket; 
+  Montana and Mississippi are ~30% cheaper
+- Sepsis and joint replacement dominate admission volumes nationally, 
+  but out-of-pocket costs for these procedures vary widely by state
+- Most states cluster between $9K–$13K in Medicare payments and $1.5K–$2.5K out-of-pocket, 
+  suggesting a relatively consistent national pattern
+- DC and Utah are clear outliers — high out-of-pocket costs despite varying Medicare payment levels, 
+  suggesting Medicare covers a smaller share of total costs in these states
 
 ## Setup
 
