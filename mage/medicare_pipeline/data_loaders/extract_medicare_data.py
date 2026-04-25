@@ -20,7 +20,7 @@ def load_data_from_big_query(*args, **kwargs):
             provider_street_address,
             provider_city,
             provider_state,
-            provider_zip_code,
+            provider_zipcode,
             hospital_referral_region_description,
             total_discharges,
             average_covered_charges,

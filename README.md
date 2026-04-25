@@ -116,8 +116,12 @@ docker compose up
 
 Access Mage at `http://localhost:6789` and run the `medicare_ingestion` pipeline.
 
+**Note:** dbt transformations now run automatically as part of the Mage pipeline. You do not need to run dbt manually.
+
 ### 6. Run dbt transformations
-```bash
+*dbt is now automated by Mage. If you want to run dbt manually for development or debugging, use:*
+
+```
 uv venv && source .venv/bin/activate
 uv pip install -r requirements.txt
 cd medicare_insights
@@ -128,7 +132,6 @@ dbt deps && dbt run && dbt test
 
 - Parametrize pipeline to support multiple Medicare tables (outpatient, physician)
 - Add incremental dbt models for year-over-year comparison
-- Schedule pipeline with Mage triggers for automated runs
 - Add data quality monitoring with dbt alerts
 
 ## Acknowledgements
