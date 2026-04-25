@@ -12,4 +12,5 @@ services:
     volumes:
       - .:/home/src/
       - ~/.gcp/medicare-de-project.json:/home/src/medicare_pipeline/credentials/medicare-de-project.json
+      - ../medicare_insights:/home/src/medicare_insights
     restart: on-failure

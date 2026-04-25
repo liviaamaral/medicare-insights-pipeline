@@ -1,0 +1,16 @@
+triggers:
+- description: null
+  envs: []
+  last_enabled_at: 2026-04-25 20:59:06.987503+00:00
+  name: weekly_medicare_ingestion
+  pipeline_uuid: medicare_ingestion
+  schedule_interval: '@weekly'
+  schedule_type: time
+  settings:
+    allow_blocks_to_fail: false
+    skip_if_previous_running: true
+  sla: null
+  start_time: '2026-01-01 00:00:00'
+  status: active
+  token: null
+  variables: {}

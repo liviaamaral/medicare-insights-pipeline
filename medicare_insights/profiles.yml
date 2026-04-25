@@ -1,0 +1,12 @@
+medicare_insights:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: medicare-de-project
+      dataset: medicare_insights
+      keyfile: /home/src/medicare_pipeline/credentials/medicare-de-project.json
+      location: us-central1
+      threads: 4
+      timeout_seconds: 300
