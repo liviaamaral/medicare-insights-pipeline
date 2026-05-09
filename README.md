@@ -25,7 +25,7 @@ Built with GCP, Terraform, Mage, dbt, and Looker Studio.
 - Visualization — [Looker Studio](https://lookerstudio.google.com)
 
 <p align="center">
-  <img src="docs/architecture.png" alt="Pipeline architecture" width="800"/>
+  <img src="docs/architecture_2.png" alt="Pipeline architecture" width="800"/>
 </p>
 
 ## Dashboard
